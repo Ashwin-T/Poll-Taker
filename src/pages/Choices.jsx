@@ -25,7 +25,8 @@ const Choices = () => {
         
         await setDoc(doc(db, code, "teacherData"), {
             handsRaised : 0,
-            numberOfStudents: 0
+            numberOfStudents: 0,
+            status: 0,
           })
 
         
