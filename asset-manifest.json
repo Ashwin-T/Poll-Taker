@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/Poll-Taker/static/css/main.4f1ca667.chunk.css",
+    "main.js": "/Poll-Taker/static/js/main.ec5a6260.chunk.js",
+    "main.js.map": "/Poll-Taker/static/js/main.ec5a6260.chunk.js.map",
+    "runtime-main.js": "/Poll-Taker/static/js/runtime-main.8a6ae394.js",
+    "runtime-main.js.map": "/Poll-Taker/static/js/runtime-main.8a6ae394.js.map",
+    "static/js/2.223a981a.chunk.js": "/Poll-Taker/static/js/2.223a981a.chunk.js",
+    "static/js/2.223a981a.chunk.js.map": "/Poll-Taker/static/js/2.223a981a.chunk.js.map",
+    "index.html": "/Poll-Taker/index.html",
+    "static/css/main.4f1ca667.chunk.css.map": "/Poll-Taker/static/css/main.4f1ca667.chunk.css.map",
+    "static/js/2.223a981a.chunk.js.LICENSE.txt": "/Poll-Taker/static/js/2.223a981a.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8a6ae394.js",
+    "static/js/2.223a981a.chunk.js",
+    "static/css/main.4f1ca667.chunk.css",
+    "static/js/main.ec5a6260.chunk.js"
+  ]
+}
