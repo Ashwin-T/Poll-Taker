@@ -24,17 +24,22 @@ const Choices = () => {
     const handleCreateSession = async() => {
         
         await setDoc(doc(db, code, "teacherData"), {
-            handsRaised : 0,
+            questions : 0,
             numberOfStudents: 0,
-            status: 0,
+            start: false,
           })
 
-        
+          await setDoc(doc(db, code, "currentQuestion"), {
+            currentQuestion: 'n/a',
+            yes : 0,
+            no: 0,
+            maybe: 0,
+          })
+    
     }
 
     const code = createCode();
-
-
+    
 
     return ( 
 

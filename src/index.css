@@ -16,6 +16,10 @@ body{
   justify-content: center;
   align-items: center;
 }
+.flexStart{
+  justify-content: flex-start;
+  align-items: center;
+}
 
 nav{
   display: flex;
@@ -93,12 +97,25 @@ nav{
   font-size: 1.25rem;
   border-radius: 25px;
   transition: all 0.5s ease;
+  cursor: pointer;
 }
 
 .join .buttonStart{
   background-color: white;
   border: 5px solid green;
   color: green;
+}
+
+.join .option{
+  background-color: white;
+  color: dodgerblue;
+  border: 5px solid dodgerblue;
+  float: left;
+}
+
+.join .option:hover{
+  background-color: dodgerblue;
+  color: white;
 }
 
 .join .buttonStart:hover{
@@ -122,7 +139,22 @@ nav{
   font-size: 4vh;
 }
 
+.questionInput{
+  width: 45vw;
+  height: 7vh;
+  font-size: 4vh;
+}
 
+.teacherQuestion{
+  color: dodgerblue;
+  text-align: center; 
+}
+
+hr{
+  color: dodgerblue;
+  background-color: dodgerblue;
+  height: 5;
+}
 
 
 .loginContainer h1{
