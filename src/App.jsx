@@ -1,18 +1,34 @@
-import {Route, Routes} from 'react-router-dom';
 import Login from './components/Login';
-
-import Choices from './pages/Choices'
+import Sources from './components/Sources';
+import Loading from './components/Loading';
+//hooks
+import { useEffect } from 'react';
+import {useAuthState} from "react-firebase-hooks/auth"
+//firebase
+import { getAuth } from 'firebase/auth';
+import app from './components/Firebase';
 
 const App = () => {
 
+  const auth = getAuth(); 
+  useEffect(() => {
+    console.log('firebase obj: ' + app);
+  }, [])
+
+  const [user, loading, error] = useAuthState(auth);
+
+  const ErrorDisplay = () => {
+    return(
+      <div className="container flexbox column center">
+        <h1>Sorry we have encountered an error of {error}.</h1>
+        <h2>Quit tab and retry later</h2>
+      </div>
+    )
+  }
+
   return (
     <>  
-          <Routes>
-            <Route path = "/" element = {<Login />}/>
-            <Route path = "choices" element = {<Choices />} />
-            <Route path = "join" />
-            <Route path = "create" />
-          </Routes>
+        {!loading ? error ?  <ErrorDisplay />: user ? <Sources /> : <Login />: <Loading />}
     </>
   );
 }

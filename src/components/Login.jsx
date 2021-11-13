@@ -1,44 +1,39 @@
 import logo from '../assets/images/logo.png';
-// import Navbar from './Navbar';
 import GoogleButton from 'react-google-button'
-import { Navigate } from "react-router-dom";
-import { useState, useEffect } from "react";
-import app  from "./Firebase.js";
+
+//firebase
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+
 
 const Login = () => {
 
     const provider = new GoogleAuthProvider();
     const auth = getAuth();
 
-    const [redirect, changeRedirect] = useState(false);
 
-    useEffect(() => {
-        app.auth().onAuthStateChanged(function(user) {
-            console.log('Welcome' + user);
-        })    
-    }, [])
-
-   
     const signIn = () => {
+        console.log('sign in attempt')
+        
         signInWithPopup(auth, provider)
-            .then((result) => {
-                const credential = GoogleAuthProvider.credentialFromResult(result);
-                const token = credential.accessToken;
-                const user = result.user;
+        .then((result) => {
+          GoogleAuthProvider.credentialFromResult(result);
+         
+        }).catch((error) => {
+          // Handle Errors here.
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // The email of the user's account used.
+          const email = error.email;
+          // The AuthCredential type that was used.
+          const credential = GoogleAuthProvider.credentialFromError(error);
 
-                console.log(token, user);
+          console.log('error: ' + errorCode, errorMessage, email, credential)
 
-                // ...  
-                changeRedirect(true);
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                const email = error.email;
-                const credential = GoogleAuthProvider.credentialFromError(error);
-                console.log(errorCode, errorMessage, email, credential);
-            });
+          // ...
+        });
+      
+
+        
     }
 
 
@@ -56,8 +51,6 @@ const Login = () => {
                     </div>
 
                     <GoogleButton onClick = {signIn} type="dark"/>
-
-                    {redirect ? <Navigate to='/choices' />: <></>}
 
             </div>
         </>
