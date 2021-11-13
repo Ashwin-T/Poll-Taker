@@ -139,6 +139,24 @@ nav{
   font-size: 4vh;
 }
 
+.buttons .joinButton{
+  background-color: white;
+  border: 5px solid green;
+  color: green;
+  width: 10vw;
+  height: 7vh;
+  margin: 2vw;
+  font-size: 1.25rem;
+  border-radius: 25px;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+
+.buttons .joinButton:hover{
+  background-color: green;
+  color: white;
+}
+
 .questionInput{
   width: 45vw;
   height: 7vh;
@@ -166,6 +184,7 @@ hr{
 @media only screen and (max-width: 800px) {
   .choices button{
     font-size: 2vh;
+    width: 50vw;
   } 
   .choices h1{
     font-size: 4vw;
@@ -180,6 +199,11 @@ hr{
     font-size: 2vh;
     width: 25vw;
   } 
+
+  .buttons .joinButton{
+    font-size: 2vh;
+    width: 25vw;
+  }
 }
 
 

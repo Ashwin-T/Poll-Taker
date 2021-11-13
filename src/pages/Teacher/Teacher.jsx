@@ -49,7 +49,8 @@ const Teacher = () => {
         const handleTermination = async() => {
             setLoading(true);
             await setTeacherData({numberOfStudents : 0, questions: 0, start: false})
-            window.location.href = '/'
+            await setQuestionData({question : 'none', yes: 0, no: 0, maybe: 0}) 
+            window.location.href = '/Poll-Taker/' //change later maybe idk
             await deleteDoc(doc(db, `${code}`, "teacherData"))
             await deleteDoc(doc(db, `${code}`, "currentQuestion"))
             setLoading(false);
@@ -138,6 +139,9 @@ const Teacher = () => {
                 <h3>
                     Maybes: <span className = 'teacherQuestion'>{questionData.maybe}</span>
                 </h3>
+                <h4>
+                    Hands Raised: <span className = 'teacherQuestion'>{teacherData.handsRaised}</span>
+                </h4>
             </div>
 
             <button className = 'buttonStop' onClick = {()=>{handleSessionTermination()}}>End Session</button>

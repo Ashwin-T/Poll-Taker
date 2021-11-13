@@ -1,11 +1,12 @@
 import Navbar from '../components/Navbar'
 import {Link} from 'react-router-dom'
 import { useState } from 'react'
-import { getFirestore, doc, setDoc } from "firebase/firestore"; 
+import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore"; 
+import swal from 'sweetalert';
+
 
 
 const Choices = () => {
-
 
 
     const createCode = () =>{ 
@@ -40,6 +41,22 @@ const Choices = () => {
 
     const code = createCode();
     
+    const [codeInput, setCodeInput] = useState('')
+
+    const handleJoin = async() => {
+
+        const docRef = doc(db, codeInput, "teacherData");
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+            window.location.href = `/#/join/${codeInput}`
+        } else {
+            swal( "Oops" ,  "The code you entered is not valid" ,  "error" )
+        }
+
+    }
+
+    
 
     return ( 
 
@@ -54,7 +71,17 @@ const Choices = () => {
                             <div className = "flexbox column center buttons">
                                 <Link to={{pathname: `/create/${code}`}}><button onClick = {()=>handleCreateSession()}>Teacher</button></Link>
                                 <button onClick = {()=>setSelected(true)}>Student</button>
-                                {selected ? <Link to={{pathname: `/join:${code}`}}><button>Join</button></Link> : null}
+                                {selected ? 
+
+
+                                <>  
+                                    <div>
+                                    <label>Enter Code: </label>
+                                        <input type = "text" className = 'joinInput' value = {codeInput}  onChange = {(e)=> setCodeInput(e.target.value)}placeholder = 'a1b2'/>
+                                    </div>
+                                    <button className = 'joinButton' onClick = {()=>handleJoin()}>Join</button>
+                                </>
+                                : null}
                             </div>
                         </div>
                 </div>
