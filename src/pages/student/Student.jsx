@@ -67,7 +67,7 @@ const Student = () => {
             const docSnap = await getDoc(docRef);
     
             if (!docSnap.exists()) {
-                swal("You have left or been kicked from the session!" , "If this is mistake, try re-entering a join code" ,  "warning" )
+                swal("You have left, been kicked, or the session has ended!" , "If this is mistake, try re-entering a join code" ,  "warning" )
                 window.location.href = `/Poll-Taker/#`
             }
            
