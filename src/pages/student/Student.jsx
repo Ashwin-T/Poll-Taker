@@ -62,7 +62,7 @@ const Student = () => {
             if (!docSnap.exists()) {
                 setEndedSession(true);
                 swal("Your join code is no longer valid!" , "Redirecting you to the home page" ,  "warning" )
-                window.location.href = `/#`
+                window.location.href = `/Poll-Taker/#`
             }
            
            }
@@ -124,7 +124,7 @@ const Student = () => {
                     </div>: <h1 style = {{color: 'green'}} className="flexbox center">Your Answer Has Been Submitted</h1>}
 
 
-                    <Link to={{pathname: `/`}} ><button className = 'buttonStop'>Leave</button></Link>
+                    <Link to={{pathname: `./join/bn4h`}} ><button className = 'buttonStop'>Leave</button></Link>
 
                     <div className="flexbox flex-end center">
 

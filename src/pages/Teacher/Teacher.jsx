@@ -54,7 +54,7 @@ const Teacher = () => {
             await setTeacherData({numberOfStudents : 0, questions: 0, start: false, pollNumber: 0})
             await setQuestionData({question : 'none', yes: 0, no: 0, maybe: 0})
             await deleteDoc(doc(db, `${code}`, "teacherData"))
-            await deleteDoc(doc(db, `${code}`, "currentQuestion")).then(()=>window.location.href = '/')
+            await deleteDoc(doc(db, `${code}`, "currentQuestion")).then(()=>window.location.href = '/Poll-Taker')
             setLoading(false);
        }
 
@@ -88,7 +88,7 @@ const Teacher = () => {
             await setTeacherData({numberOfStudents : 0, questions: 0, start: false, pollNumber: 0})
             await setQuestionData({question : 'none', yes: 0, no: 0, maybe: 0})
             await deleteDoc(doc(db, `${code}`, "teacherData"))
-            await deleteDoc(doc(db, `${code}`, "currentQuestion")).then(()=>window.location.href = '/')
+            await deleteDoc(doc(db, `${code}`, "currentQuestion")).then(()=>window.location.href = '/Poll-Taker')
             setLoading(false);
        }
 

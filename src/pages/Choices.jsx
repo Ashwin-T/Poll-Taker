@@ -50,7 +50,7 @@ const Choices = () => {
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
-            window.location.href = `/#/join/${codeInput}`
+            window.location.href = `/Poll-Taker/#/join/${codeInput}`
         } else {
             swal( "Oops" ,  "The code you entered is not valid" ,  "error" )
         }
@@ -73,8 +73,6 @@ const Choices = () => {
                                 <Link to={{pathname: `/create/${code}`}}><button onClick = {()=>handleCreateSession()}>Teacher</button></Link>
                                 <button onClick = {()=>setSelected(true)}>Student</button>
                                 {selected ? 
-
-
                                 <>  
                                     <div>
                                     <label>Enter Code: </label>
