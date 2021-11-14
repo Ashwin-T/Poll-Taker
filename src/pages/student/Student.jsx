@@ -1,6 +1,7 @@
 import Navbar from '../../components/Navbar'
-import { useParams, Link } from 'react-router-dom';
+import Loading from "../../components/Loading"
 
+import { useParams, Link } from 'react-router-dom';
 import {useState, useEffect} from "react";
 import {getFirestore, doc, onSnapshot, updateDoc, getDoc } from "firebase/firestore"
 import swal from 'sweetalert';
@@ -19,13 +20,13 @@ const Student = () => {
 
     const [pollNumber, setPollNumber] = useState(0);
 
-    const [endedSession, setEndedSession] = useState(false);
+    const [loading, setLoading] = useState(false);
 
 
 
     useEffect(() => {
 
-    
+        setLoading(true);
         const changeSelected = async () => {
             const docRef = doc(db, joinCode, "teacherData");
             const docSnap = await getDoc(docRef);
@@ -37,16 +38,19 @@ const Student = () => {
         }
 
         changeSelected();
+        setLoading(false);
 
-    }, [teacherData, endedSession, joinCode])
+    }, [teacherData, joinCode, db])
 
     useEffect(() => {
+        setLoading(true);
         onSnapshot(doc(db, `${joinCode}`, "teacherData"), (doc) => {
           setTeacherData(doc.data());
         });
 
         onSnapshot(doc(db, `${joinCode}`, "currentQuestion"), (doc) => {
             setQuestionData(doc.data());
+            setLoading(false);
          });
 
   }, [db, joinCode])
@@ -54,20 +58,25 @@ const Student = () => {
    
 
     useEffect(() => {
+
+        setLoading(true);
+
         const checkForDoc = async() => {
 
             const docRef = doc(db, joinCode, "teacherData");
             const docSnap = await getDoc(docRef);
     
             if (!docSnap.exists()) {
-                setEndedSession(true);
-                swal("Your join code is no longer valid!" , "Redirecting you to the home page" ,  "warning" )
+                swal("You have left or been kicked from the session!" , "If this is mistake, try re-entering a join code" ,  "warning" )
                 window.location.href = `/Poll-Taker/#`
             }
            
-           }
+        }
    
            checkForDoc();
+
+           setLoading(false);
+
 
 
     } , [db, joinCode, teacherData])
@@ -78,11 +87,12 @@ const Student = () => {
 
     const handleChoose  = async(choice) => {
         
+
+            setLoading(true);
+
             setSelected(true);
 
             console.log('Answer Submitted for Current question number: ' + pollNumber)
-
-
 
             if(choice === 0){
                 const ref = doc(db, `${joinCode}`, "currentQuestion")
@@ -103,6 +113,9 @@ const Student = () => {
                 });
             }
 
+            setLoading(false);
+
+
         
    }
 
@@ -110,6 +123,8 @@ const Student = () => {
     return (
         <>
           <Navbar />
+
+          {loading ? <Loading /> :
 
             <div className="flexbox column center">
                 <div className="flexbox column center join">
@@ -124,7 +139,7 @@ const Student = () => {
                     </div>: <h1 style = {{color: 'green'}} className="flexbox center">Your Answer Has Been Submitted</h1>}
 
 
-                    <Link to={{pathname: `./join/bn4h`}} ><button className = 'buttonStop'>Leave</button></Link>
+                    <Link to={{pathname: `/join/bn4h`}} ><button className = 'buttonStop'>Leave</button></Link>
 
                     <div className="flexbox flex-end center">
 
@@ -135,7 +150,7 @@ const Student = () => {
 
                 <div className = 'showCode'>Session Code: {joinCode}</div>
 
-            </div>
+            </div>}
 
 
             

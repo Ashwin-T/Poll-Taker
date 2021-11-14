@@ -1,7 +1,7 @@
 import Navbar from '../components/Navbar'
 import {Link} from 'react-router-dom'
 import { useState } from 'react'
-import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore"; 
+import { getFirestore, doc, setDoc, getDoc, updateDoc } from "firebase/firestore"; 
 import swal from 'sweetalert';
 
 
@@ -46,18 +46,21 @@ const Choices = () => {
 
     const handleJoin = async() => {
 
-        const docRef = doc(db, codeInput, "teacherData");
+        const docRef = doc(db, `${codeInput}`, "teacherData");
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
+            const updateRef = doc(db, `${codeInput}`, "teacherData")
+            await updateDoc(updateRef, {
+                numberOfStudents: updateRef.numberOfStudents + 1,
+            });
+
             window.location.href = `/Poll-Taker/#/join/${codeInput}`
         } else {
             swal( "Oops" ,  "The code you entered is not valid" ,  "error" )
         }
 
     }
-
-    
 
     return ( 
 

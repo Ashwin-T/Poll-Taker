@@ -8,6 +8,7 @@ import {getFirestore, doc, setDoc, onSnapshot, deleteDoc, updateDoc} from "fireb
 
 const Teacher = () => {
 
+        const [endedSession, setEndedSession] = useState(false);
     
         const {code} = useParams();
 
@@ -50,12 +51,18 @@ const Teacher = () => {
 
 
         const handleTermination = async() => {
-            setLoading(true);
+            await setLoading(true);
+            await setEndedSession(true); 
             await setTeacherData({numberOfStudents : 0, questions: 0, start: false, pollNumber: 0})
             await setQuestionData({question : 'none', yes: 0, no: 0, maybe: 0})
+
+            const startRef = doc(db, `${code}`, "teacherData")
+            await updateDoc(startRef, {
+                start: false
+            });
+            
             await deleteDoc(doc(db, `${code}`, "teacherData"))
-            await deleteDoc(doc(db, `${code}`, "currentQuestion")).then(()=>window.location.href = '/Poll-Taker')
-            setLoading(false);
+            await deleteDoc(doc(db, `${code}`, "currentQuestion")).then(()=>window.location.href = '/Poll-Taker/#').then(()=>setLoading(false));
        }
 
 
@@ -63,9 +70,6 @@ const Teacher = () => {
 
         return (  
             <>
-            <h1>Awaiting Students...</h1>
-                    <h2># of Students: {teacherData.numberOfStudents}</h2>
-                    <br />
                     <div className="joinCode">Join Code: {code}</div>
                     <br />
                     <div>
@@ -84,13 +88,20 @@ const Teacher = () => {
         const [question, setQuestion] = useState('');
 
         const handleTermination = async() => {
-            setLoading(true);
+            await setLoading(true);
+            await setEndedSession(true); 
             await setTeacherData({numberOfStudents : 0, questions: 0, start: false, pollNumber: 0})
             await setQuestionData({question : 'none', yes: 0, no: 0, maybe: 0})
+
+            const startRef = doc(db, `${code}`, "teacherData")
+            await updateDoc(startRef, {
+                start: false
+            });
+            
             await deleteDoc(doc(db, `${code}`, "teacherData"))
-            await deleteDoc(doc(db, `${code}`, "currentQuestion")).then(()=>window.location.href = '/Poll-Taker')
-            setLoading(false);
+            await deleteDoc(doc(db, `${code}`, "currentQuestion")).then(()=>window.location.href = '/Poll-Taker/#').then(()=>setLoading(false));
        }
+
 
 
         const handleQuestionSubmit = async()=>{
@@ -193,7 +204,7 @@ const Teacher = () => {
         <Navbar />
             <div className="flexbox column center">
                 <div className="flexbox column center join">
-                    {loading ? <Loading /> : teacherData.start ? <Session />: <WaitingRoom />}
+                    {loading ? <Loading /> : !endedSession ? teacherData.start ? <Session />: <WaitingRoom />: null}
                 </div>
             </div>
 
