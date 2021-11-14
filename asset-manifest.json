@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Poll-Taker/static/css/main.423c9319.chunk.css",
-    "main.js": "/Poll-Taker/static/js/main.9a242618.chunk.js",
-    "main.js.map": "/Poll-Taker/static/js/main.9a242618.chunk.js.map",
+    "main.js": "/Poll-Taker/static/js/main.85fe74ba.chunk.js",
+    "main.js.map": "/Poll-Taker/static/js/main.85fe74ba.chunk.js.map",
     "runtime-main.js": "/Poll-Taker/static/js/runtime-main.8a6ae394.js",
     "runtime-main.js.map": "/Poll-Taker/static/js/runtime-main.8a6ae394.js.map",
     "static/js/2.a7cde7c3.chunk.js": "/Poll-Taker/static/js/2.a7cde7c3.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.8a6ae394.js",
     "static/js/2.a7cde7c3.chunk.js",
     "static/css/main.423c9319.chunk.css",
-    "static/js/main.9a242618.chunk.js"
+    "static/js/main.85fe74ba.chunk.js"
   ]
 }
