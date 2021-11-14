@@ -28,10 +28,11 @@ const Choices = () => {
             questions : 0,
             numberOfStudents: 0,
             start: false,
+            pollNumber: 0,
           })
 
           await setDoc(doc(db, code, "currentQuestion"), {
-            currentQuestion: 'n/a',
+            currentQuestion: 'No Poll Yet',
             yes : 0,
             no: 0,
             maybe: 0,

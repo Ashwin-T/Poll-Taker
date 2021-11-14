@@ -1,6 +1,8 @@
 import logo from '../assets/images/logo.png'
 import { getAuth, signOut } from "firebase/auth";
 import {Navigate} from 'react-router-dom'
+import swal from 'sweetalert';
+
 
 const Navbar = () => {
 
@@ -10,6 +12,7 @@ const Navbar = () => {
 
             signOut(auth).then(() => {
                 console.log('Signed Out')
+                swal("You have been signed out", "NOTE: Signing out does not mean ending/leaving a session!\nRelogin and click end/leave session", "success");
             }).catch((error) => {
                 console.log(error)
             });
