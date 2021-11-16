@@ -68,7 +68,7 @@ const Student = () => {
             const docRef = doc(db, joinCode, "teacherData");
             const docSnap = await getDoc(docRef);
     
-            if (!docSnap.exists() && !left) {
+            if (!left && !docSnap.exists()) {
                 swal("You have been kicked or the session has ended!" , "If this is mistake, try re-entering a join code" ,  "warning" )
                 window.location.href = `/Poll-Taker/#`
             }
@@ -118,8 +118,8 @@ const Student = () => {
         
    }
 
-   const handleLeave = ()=>{
-       setLeft(true)
+   const handleLeave = async()=>{
+       await setLeft(true)
        navigate('/')
    }
 
