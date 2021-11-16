@@ -1,7 +1,7 @@
 import Navbar from '../../components/Navbar'
 import Loading from "../../components/Loading"
 
-import { useParams, Link } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import {useState, useEffect} from "react";
 import {getFirestore, doc, onSnapshot, updateDoc, getDoc } from "firebase/firestore"
 import swal from 'sweetalert';
@@ -21,7 +21,9 @@ const Student = () => {
     const [pollNumber, setPollNumber] = useState(0);
 
     const [loading, setLoading] = useState(false);
-
+    const [left, setLeft] = useState(false); 
+    
+    let navigate = useNavigate();
 
 
     useEffect(() => {
@@ -66,7 +68,7 @@ const Student = () => {
             const docRef = doc(db, joinCode, "teacherData");
             const docSnap = await getDoc(docRef);
     
-            if (!docSnap.exists()) {
+            if (!docSnap.exists() && !left) {
                 swal("You have left, been kicked, or the session has ended!" , "If this is mistake, try re-entering a join code" ,  "warning" )
                 window.location.href = `/Poll-Taker/#`
             }
@@ -79,10 +81,7 @@ const Student = () => {
 
 
 
-    } , [db, joinCode, teacherData])
-
-
-    
+    } , [db, joinCode, teacherData, left])
 
 
     const handleChoose  = async(choice) => {
@@ -119,6 +118,11 @@ const Student = () => {
         
    }
 
+   const handleLeave = ()=>{
+       setLeft(true)
+       navigate('/')
+   }
+
 
     return (
         <>
@@ -139,7 +143,7 @@ const Student = () => {
                     </div>: <h1 style = {{color: 'green'}} className="flexbox center">Your Answer Has Been Submitted</h1>}
 
 
-                    <Link to={{pathname: `/join/bn4h`}} ><button className = 'buttonStop'>Leave</button></Link>
+                    <button onClick = {handleLeave} className = 'buttonStop'>Leave</button>
 
                     <div className="flexbox flex-end center">
 

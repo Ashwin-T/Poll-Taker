@@ -204,7 +204,7 @@ const Teacher = () => {
         <Navbar />
             <div className="flexbox column center">
                 <div className="flexbox column center join">
-                    {loading ? <Loading /> : !endedSession ? teacherData.start ? <Session />: <WaitingRoom />: null}
+                    {loading ? <Loading /> : !endedSession ? teacherData?.start ? <Session />: <WaitingRoom />: null}
                 </div>
             </div>
 

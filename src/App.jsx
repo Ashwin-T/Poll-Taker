@@ -21,7 +21,7 @@ const App = () => {
     return(
       <div className="container flexbox column center">
         <h1>Sorry we have encountered an error of {error}.</h1>
-        <h2>Quit tab and retry later</h2>
+        <h2>Quit tab and retry</h2>
       </div>
     )
   }
