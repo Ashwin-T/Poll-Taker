@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/Poll-Taker/static/css/main.08d31d7c.chunk.css",
-    "main.js": "/Poll-Taker/static/js/main.5a391fde.chunk.js",
-    "main.js.map": "/Poll-Taker/static/js/main.5a391fde.chunk.js.map",
+    "main.js": "/Poll-Taker/static/js/main.c1c7d311.chunk.js",
+    "main.js.map": "/Poll-Taker/static/js/main.c1c7d311.chunk.js.map",
     "runtime-main.js": "/Poll-Taker/static/js/runtime-main.8a6ae394.js",
     "runtime-main.js.map": "/Poll-Taker/static/js/runtime-main.8a6ae394.js.map",
-    "static/js/2.b5b38588.chunk.js": "/Poll-Taker/static/js/2.b5b38588.chunk.js",
-    "static/js/2.b5b38588.chunk.js.map": "/Poll-Taker/static/js/2.b5b38588.chunk.js.map",
+    "static/js/2.d05cb4de.chunk.js": "/Poll-Taker/static/js/2.d05cb4de.chunk.js",
+    "static/js/2.d05cb4de.chunk.js.map": "/Poll-Taker/static/js/2.d05cb4de.chunk.js.map",
     "index.html": "/Poll-Taker/index.html",
     "static/css/main.08d31d7c.chunk.css.map": "/Poll-Taker/static/css/main.08d31d7c.chunk.css.map",
-    "static/js/2.b5b38588.chunk.js.LICENSE.txt": "/Poll-Taker/static/js/2.b5b38588.chunk.js.LICENSE.txt"
+    "static/js/2.d05cb4de.chunk.js.LICENSE.txt": "/Poll-Taker/static/js/2.d05cb4de.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.8a6ae394.js",
-    "static/js/2.b5b38588.chunk.js",
+    "static/js/2.d05cb4de.chunk.js",
     "static/css/main.08d31d7c.chunk.css",
-    "static/js/main.5a391fde.chunk.js"
+    "static/js/main.c1c7d311.chunk.js"
   ]
 }
